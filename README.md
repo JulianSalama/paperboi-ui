@@ -1,3 +1,10 @@
+// create a bucket
+$ aws s3 mb s3://bucket-name
+// list buckets
+$ aws s3 ls
+// build and deploy the app
+$ npm run build && aws s3 sync build/ s3://bucket-name
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
