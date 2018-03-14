@@ -5,6 +5,10 @@ $ aws s3 ls
 // build and deploy the app
 $ npm run build && aws s3 sync build/ s3://paperboi-ui
 
+make everything public and select web hosting in the bucket management
+
+The url is: http://paperboi-web-ui.s3-website.us-east-2.amazonaws.com/#/account_databases 
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
