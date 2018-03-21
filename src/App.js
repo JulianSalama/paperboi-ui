@@ -11,11 +11,24 @@ const httpClient = (url, options = {}) => {
     if (!options.headers) {
         options.headers = new Headers({ Accept: 'application/json' });
     }
-    const token = localStorage.getItem('token');
-    options.headers.set('Authorization', `Bearer ${token}`);
+    if ( url.includes('sign_in') ) {
+
+    } else {
+      const token = localStorage.getItem('access-token');
+      const uid = localStorage.getItem('uid');
+      const expiry = localStorage.getItem('expiry');
+      const client = localStorage.getItem('client');
+
+      options.headers.set('token-type', 'Bearer');
+      options.headers.set('access-token', token);
+      options.headers.set('uid', uid);
+      options.headers.set('expiry', expiry);
+      options.headers.set('client', client);
+    }
+
     return fetchUtils.fetchJson(url, options);
 }
-const restClient = simpleRestClient('http://localhost:3000', httpClient);
+const restClient = simpleRestClient('http://localhost:8080', httpClient);
 
 //restClient={jsonServerRestClient('http://localhost:8080')}>
 const App = () => (

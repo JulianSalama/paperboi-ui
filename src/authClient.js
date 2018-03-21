@@ -16,22 +16,29 @@ export default (type, params) => {
                 if (response.status < 200 || response.status >= 300) {
                     throw new Error(response.statusText);
                 }
-
-                return response.json();
+                return response;
             })
-            .then(({ token }) => {
-                localStorage.setItem('token', token);
+            .then(response => {
+                debugger
+                localStorage.setItem('access-token', response.headers.get('access-token'));
+                localStorage.setItem('uid', response.headers.get('uid'));
+                localStorage.setItem('expiry', response.headers.get('expiry'));
+                localStorage.setItem('client', response.headers.get('client'));
             });
     }
 
     if (type === AUTH_LOGOUT) {
-      localStorage.removeItem('token');
+      localStorage.removeItem('access-token');
+      localStorage.removeItem('uid');
+      localStorage.removeItem('expiry');
+      localStorage.removeItem('client');
       return Promise.resolve();
     }
 
     if (type === AUTH_ERROR) {
       const status  = params.message.status;
       if (status === 401 || status === 403) {
+        localStorage.removeItem('uid');
         localStorage.removeItem('token');
         return Promise.reject();
       }
