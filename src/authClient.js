@@ -38,10 +38,10 @@ export default (type, params) => {
       debugger
       const status  = params.message.status;
       if (status === 401 || status === 403) {
-        localStorage.removeItem('uid');
-        localStorage.removeItem('access-token');
-        return Promise.reject();
+        //localStorage.removeItem('uid');
+        //localStorage.removeItem('access-token');
       }
+      return Promise.resolve();
     }
 
     if (type === AUTH_CHECK) {
