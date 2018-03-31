@@ -1,7 +1,7 @@
 import { fetchUtils, simpleRestClient, jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
 
 const httpClient = (url, options = {}) => {
-  debugger
+
     if (!options.headers) {
         options.headers = new Headers({ Accept: 'application/json' });
     }
@@ -21,9 +21,9 @@ const httpClient = (url, options = {}) => {
     }
 
     return fetchUtils.fetchJson(url, options).then(response => {
-      debugger
+
         //if (response.status >= 200 && response.status < 300) {
-          if ( typeof response.headers.get('access-token') !== "undefined" && response.headers.get('access-token') != "" ) {
+          if ( typeof response.headers.get('access-token') !== "undefined" && response.headers.get('access-token') !== "" ) {
             localStorage.setItem('access-token', response.headers.get('access-token'));
           }
           if ( typeof response.headers.get('uid') !== "undefined" ) {
@@ -35,6 +35,14 @@ const httpClient = (url, options = {}) => {
           if ( typeof response.headers.get('client') !== "undefined" ) {
             localStorage.setItem('client', response.headers.get('client'));
           }
+
+          if ( typeof response.headers.get('account-id') !== "undefined" ) {
+            localStorage.setItem('account-id', response.headers.get('account-id'));
+          }
+          if ( typeof response.headers.get('resources') !== "undefined" ) {
+            localStorage.setItem('resources', response.headers.get('resources'));
+          }
+
         //}
         return response;
     });

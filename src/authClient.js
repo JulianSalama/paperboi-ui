@@ -19,6 +19,8 @@ export default (type, params) => {
                 return response;
             })
             .then(response => {
+                localStorage.setItem('resources', response.headers.get('resources'));
+                localStorage.setItem('account-id', response.headers.get('account-id'));
                 localStorage.setItem('access-token', response.headers.get('access-token'));
                 localStorage.setItem('uid', response.headers.get('uid'));
                 localStorage.setItem('expiry', response.headers.get('expiry'));
@@ -35,7 +37,6 @@ export default (type, params) => {
     }
 
     if (type === AUTH_ERROR) {
-      debugger
       const status  = params.message.status;
       if (status === 401 || status === 403) {
         //localStorage.removeItem('uid');

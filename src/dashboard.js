@@ -7,6 +7,6 @@ import { ViewTitle } from 'admin-on-rest/lib/mui';
 export default () => (
     <Card>
         <ViewTitle title="Dashboard" />
-        <CardText>Lorem ipsum sic dolor amet...</CardText>
+        <CardText>You currently have no databases, and no applications.</CardText>
     </Card>
 );

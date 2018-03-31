@@ -23,7 +23,7 @@ class StartReplicationButton extends Component {
     }
 
     render() {
-        return <FlatButton label="Start Replication" onClick={this.handleClick} />;
+        return <FlatButton label="Replicate" onClick={this.handleClick} />;
     }
 }
 
