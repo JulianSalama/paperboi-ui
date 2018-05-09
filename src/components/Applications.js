@@ -6,7 +6,7 @@ import { Card, CardText, CardStyle, CardHeader, CardActions } from 'material-ui/
 import FlatButton from 'material-ui/FlatButton';
 import { CreateButton, RefreshButton } from 'admin-on-rest';
 import { push as pushAction } from 'react-router-redux';
-import GetStartedButton from './components/GetStartedButton';
+import GetStartedButton from './GetStartedButton';
 
 const cardActionStyle = {
     zIndex: 2,

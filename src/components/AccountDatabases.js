@@ -1,6 +1,6 @@
 // in src/AccountDatabases.js
 import React from 'react';
-import { BooleanField,EditButton, DisabledInput, List, Datagrid, TextField, SimpleForm, Create, TextInput, LongTextInput, Edit } from 'admin-on-rest';
+import { BooleanField, EditButton, DisabledInput, List, Datagrid, TextField, SimpleForm, Create, TextInput, LongTextInput, Edit } from 'admin-on-rest';
 import StartReplicationButton from './StartReplicationButton';
 
 export const AccountDatabasesList = (props) => (

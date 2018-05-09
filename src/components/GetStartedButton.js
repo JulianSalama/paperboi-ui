@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { showNotification as showNotificationAction } from 'admin-on-rest';
 import { push as pushAction } from 'react-router-redux';
 import {CREATE} from 'admin-on-rest';
-import RestClient from '../RestClient';
+import restClient from '../helpers/restClient';
 
 
 class GetStartedButton extends Component {
@@ -20,7 +20,7 @@ class GetStartedButton extends Component {
   handleClick = () => {
       debugger
       const { push, record, showNotification } = this.props;
-      RestClient(CREATE, `account_applications`, { data: { 'app-id': this.props.id, 'account-id': localStorage.getItem("account-id") } })
+      restClient(CREATE, `account_applications`, { data: { 'app-id': this.props.id, 'account-id': localStorage.getItem("account-id") } })
           .then(() => {
               push('/get_started_paperboi_to_mysql');
               showNotification('Successfully added application to your datasets approved');
