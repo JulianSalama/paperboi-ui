@@ -1,7 +1,14 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import FlatButton from 'material-ui/FlatButton';
+import { showNotification as showNotificationAction } from 'admin-on-rest';
+import { push as pushAction } from 'react-router-redux';
+import { GET_ONE } from 'admin-on-rest';
 import { fetchUtils, simpleRestClient, jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
 
+// TBD: refactor this shit UI
 const httpClient = (url, options = {}) => {
-
     if (!options.headers) {
         options.headers = new Headers({ Accept: 'application/json' });
     }
@@ -42,10 +49,28 @@ const httpClient = (url, options = {}) => {
             localStorage.setItem('resources', response.headers.get('resources'));
           }
 
-        //}
+        
         return response;
     });
 }
-const restClient = simpleRestClient('http://localhost:8080', httpClient);
 
-export default restClient;
+class GetConfigurationButton extends Component {
+    handleClick = () => {
+        const { push, record, showNotification } = this.props;
+        httpClient('http://localhost:8080/account_databases/' + record.id + '/download_configs', {});
+      }
+    render() {
+        return <FlatButton label="Replicate" onClick={this.handleClick} />;
+    }
+}
+
+GetConfigurationButton.propTypes = {
+    push: PropTypes.func,
+    record: PropTypes.object,
+    showNotification: PropTypes.func,
+};
+
+export default connect(null, {
+    showNotification: showNotificationAction,
+    push: pushAction,
+})(GetConfigurationButton);

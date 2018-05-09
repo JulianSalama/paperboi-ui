@@ -11,19 +11,20 @@ import restClient from './RestClient';
 import { ApplicationList } from './Applications'
 import customRoutes from './customRoutes';
 import { GET_MANY } from 'admin-on-rest';
+import {PaperboiToMysqlAppsList, PaperboiToMysqlAppsCreate,PaperboiToMysqlAppsEdit} from './components/PaperboiToMysqlApps';
 
 
 const App = () => (
-  <Admin customRoutes={customRoutes} title="Paperboi" authClient={authClient} dashboard={Dashboard} restClient={restClient} >
+  <Admin customRoutes={customRoutes} title="Paperboi" authClient={authClient} restClient={restClient} >
       {localStorage.getItem('resources').split(',').map( resource => {
         if (resource === '1') {
           return <Resource name="account_databases" edit={AccountDatabaseEdit} create={AccountDatabaseCreate} list={AccountDatabasesList} />
         } else if (resource === '2') {
-          return <Resource name="database_events" list={DatabaseEventsList} create={DatabaseEventCreate} edit={DatabaseEventsEdit} />
+          //return <Resource name="database_events" list={DatabaseEventsList} create={DatabaseEventCreate} edit={DatabaseEventsEdit} />
         } else if (resource === '3') {
           return <Resource name="paperboi_applications" list={ApplicationList} />
-        } else if (resource === '5') {
-          return <Resource name="paperboi_to_mysql" list={ApplicationList} />
+        } else if (resource === '8') {
+          return <Resource name="paperboi_to_mysql_apps" list={PaperboiToMysqlAppsList} create={PaperboiToMysqlAppsCreate} edit={PaperboiToMysqlAppsEdit} />
         }
       }
       ) }
