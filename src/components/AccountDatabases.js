@@ -12,7 +12,6 @@ export const AccountDatabasesList = (props) => (
             <TextField source="name" />
             <BooleanField source="is_dumped" />
             <BooleanField source="is_replicated" />
-            <StartReplicationButton />
             <EditButton />
         </Datagrid>
     </List>

@@ -21,8 +21,9 @@ class GetStartedButton extends Component {
       debugger
       const { push, record, showNotification } = this.props;
       restClient(CREATE, `account_applications`, { data: { 'app-id': this.props.id, 'account-id': localStorage.getItem("account-id") } })
-          .then(() => {
-              push('/get_started_paperboi_to_mysql');
+          .then((response) => {
+              debugger
+              window.location.href = 'http://localhost:3000/#/' + response.app;
               showNotification('Successfully added application to your datasets approved');
             })
             .catch((e) => {

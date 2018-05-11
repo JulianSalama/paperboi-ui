@@ -11,12 +11,15 @@ import customRoutes from './customRoutes';
 const App = () => (
   <Admin customRoutes={customRoutes} title="Paperboi" authClient={authClient} restClient={restClient} >
       {localStorage.getItem('resources').split(',').map( resource => {
-        if (resource === '1') {
+        debugger
+        if (resource === 'account_databases') {
           return <Resource name="account_databases" edit={AccountDatabaseEdit} create={AccountDatabaseCreate} list={AccountDatabasesList} />
-        } else if (resource === '3') {
+        } else if (resource === 'paperboi_applications') {
           return <Resource name="paperboi_applications" list={ApplicationList} />
-        } else if (resource === '5') {
+        } else if (resource === 'paperboi_to_mysql') {
           return <Resource name="paperboi_to_mysql" list={ApplicationList} />
+        } else if (resource === "Build_a_Dataset_on_S3") {
+          return <Resource name="Build A Dataset" list={ApplicationList} />
         }
       }
       ) }
