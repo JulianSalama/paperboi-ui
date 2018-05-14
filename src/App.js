@@ -3,6 +3,7 @@ import React from 'react';
 import { fetchUtils, simpleRestClient, jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
 
 import { AccountDatabasesList, AccountDatabaseCreate, AccountDatabaseEdit } from './components/AccountDatabases';
+import { BuildADatasetAppsList, BuildADatasetAppsCreate, BuildADatasetAppsEdit } from './components/BuildADataset';
 import { ApplicationList } from './components/Applications'
 import restClient from './helpers/restClient';
 import authClient from './helpers/AuthClient';
@@ -19,7 +20,7 @@ const App = () => (
         } else if (resource === 'paperboi_to_mysql') {
           return <Resource name="paperboi_to_mysql" list={ApplicationList} />
         } else if (resource === "Build_a_Dataset_on_S3") {
-          return <Resource name="Build A Dataset" list={ApplicationList} />
+          return <Resource name="build_a_dataset" list={BuildADatasetAppsList} create={BuildADatasetAppsCreate} edit={BuildADatasetAppsEdit} />
         }
       }
       ) }
